@@ -194,3 +194,5 @@ The project uses a dark-mode design system defined in `css/global.css`:
 ## 📄 License
 
 This project is submitted as an academic assignment. All educational content is for learning purposes. Price data is provided by [CoinGecko](https://www.coingecko.com/en/api) — not financial advice.
+#   W e b 3 U n i v e r s e  
+ 
