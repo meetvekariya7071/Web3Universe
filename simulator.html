@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Block Simulator — Mine Blocks & Explore Chain Immutability</title>
+  <meta name="description" content="Interactive blockchain mining simulator. Experience hashing, nonces, proof-of-work, and chain immutability hands-on." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/simulator.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">Web3<span class="logo-accent">Universe</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
+        <li><a href="concepts.html" class="nav-link" id="nav-concepts">Concepts</a></li>
+        <li><a href="prices.html" class="nav-link" id="nav-prices">Live Prices</a></li>
+        <li><a href="simulator.html" class="nav-link active" id="nav-simulator">Block Simulator</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-hero simulator-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <span class="section-tag">Hands-On Learning</span>
+      <h1 class="page-title">Block <span class="gradient-text">Simulator</span></h1>
+      <p class="page-subtitle">Mine blocks, manipulate data, and watch the chain break — then fix it. Experience blockchain immutability firsthand.</p>
+    </div>
+  </section>
+
+  <!-- Main Simulator -->
+  <section class="simulator-section" id="simulatorSection">
+    <div class="container">
+
+      <!-- Concept Explainer -->
+      <div class="concept-banner" id="conceptBanner">
+        <div class="concept-item" id="concept-hash">
+          <span class="concept-icon">🔢</span>
+          <div>
+            <strong>SHA-256 Hash</strong>
+            <p>A one-way cryptographic function — same input always gives the same output, but tiny changes completely alter the hash.</p>
+          </div>
+        </div>
+        <div class="concept-item" id="concept-nonce">
+          <span class="concept-icon">🎲</span>
+          <div>
+            <strong>Nonce</strong>
+            <p>"Number used once" — miners increment the nonce until the hash meets the difficulty target (starts with zeros).</p>
+          </div>
+        </div>
+        <div class="concept-item" id="concept-immutability">
+          <span class="concept-icon">⛓️</span>
+          <div>
+            <strong>Immutability</strong>
+            <p>Each block contains the previous block's hash. Changing any block invalidates all subsequent blocks in the chain.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Difficulty Control -->
+      <div class="controls-bar" id="controlsBar">
+        <div class="control-group" id="difficultyControl">
+          <label for="difficultySlider">Mining Difficulty</label>
+          <div class="slider-row">
+            <span class="diff-label">Easy</span>
+            <input type="range" id="difficultySlider" min="1" max="5" value="2" />
+            <span class="diff-label">Hard</span>
+            <span class="diff-value" id="difficultyDisplay">2 zeros</span>
+          </div>
+          <p class="control-hint">Target: Hash must start with <span id="targetPrefix" class="mono">00</span></p>
+        </div>
+        <div class="control-actions">
+          <button class="btn btn-primary" id="addBlockBtn">
+            <span>+ Add Block</span>
+          </button>
+          <button class="btn btn-secondary" id="resetChainBtn">
+            <span>↺ Reset Chain</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Blockchain Chain -->
+      <div class="chain-container" id="chainContainer">
+        <!-- Blocks will be injected here by JS -->
+      </div>
+
+      <!-- Hash Lab -->
+      <div class="hash-lab" id="hashLab">
+        <h2>🔬 Hash Laboratory</h2>
+        <p>Type any text below to see SHA-256 hashing in real time. Notice how even a single character change produces a completely different hash.</p>
+        <div class="hash-lab-grid">
+          <div class="hash-input-group">
+            <label for="hashInput">Input Text</label>
+            <textarea id="hashInput" placeholder="Type anything here to hash it..." rows="4">Hello, Web3!</textarea>
+          </div>
+          <div class="hash-output-group">
+            <label>SHA-256 Output</label>
+            <div class="hash-output" id="hashOutput">
+              <span id="hashOutputText" class="mono">—</span>
+            </div>
+            <div class="hash-meta" id="hashMeta">
+              <span>Length: <strong id="hashLength">0</strong> hex chars (256 bits)</span>
+              <span>Input size: <strong id="inputSize">0</strong> bytes</span>
+            </div>
+          </div>
+        </div>
+        <div class="hash-examples" id="hashExamples">
+          <h4>Try these examples:</h4>
+          <div class="example-pills">
+            <button class="example-pill" id="ex-1" data-text="Hello, World!">Hello, World!</button>
+            <button class="example-pill" id="ex-2" data-text="Hello, World">Hello, World (no !)</button>
+            <button class="example-pill" id="ex-3" data-text="Bitcoin">Bitcoin</button>
+            <button class="example-pill" id="ex-4" data-text="bitcoin">bitcoin</button>
+            <button class="example-pill" id="ex-5" data-text="Block #1 | Nonce: 0 | Data: Genesis">Block #1 Data</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mining Stats -->
+      <div class="mining-stats" id="miningStatsPanel">
+        <h2>📊 Chain Statistics</h2>
+        <div class="stats-grid">
+          <div class="mine-stat-card" id="stat-blocks">
+            <div class="mine-stat-val" id="statBlocks">1</div>
+            <div class="mine-stat-key">Blocks in Chain</div>
+          </div>
+          <div class="mine-stat-card" id="stat-valid">
+            <div class="mine-stat-val" id="statValid">1</div>
+            <div class="mine-stat-key">Valid Blocks</div>
+          </div>
+          <div class="mine-stat-card" id="stat-invalid">
+            <div class="mine-stat-val invalid" id="statInvalid">0</div>
+            <div class="mine-stat-key">Invalid Blocks</div>
+          </div>
+          <div class="mine-stat-card" id="stat-hashes">
+            <div class="mine-stat-val" id="statHashes">—</div>
+            <div class="mine-stat-key">Last Nonce Found</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <span class="logo-icon">⬡</span>
+            <span class="logo-text">Web3<span class="logo-accent">Universe</span></span>
+          </a>
+          <p>SHA-256 hashing implemented via the Web Crypto API for accurate simulation.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="concepts.html">Concepts</a></li>
+            <li><a href="prices.html">Live Prices</a></li>
+            <li><a href="simulator.html">Block Simulator</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Tech Used</h4>
+          <ul>
+            <li>Web Crypto API</li>
+            <li>SHA-256 Hashing</li>
+            <li>Proof-of-Work Sim</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Built by <strong>Meet Vekariya</strong> &middot; <strong>MSU BE-III CSE (SFI)</strong> &middot; Web3 Foundations Assignment &copy; 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/global.js"></script>
+  <script src="js/simulator.js"></script>
+</body>
+</html>

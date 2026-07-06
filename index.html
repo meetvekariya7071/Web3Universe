@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web3 Universe — Arbitrum & Layer 2 Overview</title>
+  <meta name="description" content="Understand why Ethereum needed Layer 2 solutions, what Arbitrum is, and how it scales the blockchain ecosystem." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path d="M14 2L26 8.5V19.5L14 26L2 19.5V8.5L14 2Z" stroke="url(#lg1)" stroke-width="2" fill="none"/>
+            <path d="M14 8L20 11.5V18.5L14 22L8 18.5V11.5L14 8Z" fill="url(#lg1)" opacity="0.4"/>
+            <defs>
+              <linearGradient id="lg1" x1="2" y1="2" x2="26" y2="26" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#12aaff"/>
+                <stop offset="1" stop-color="#6366f1"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="logo-text">Web3<span class="logo-accent">Universe</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html"    class="nav-link active" id="nav-home">Home</a></li>
+        <li><a href="concepts.html" class="nav-link" id="nav-concepts">Concepts</a></li>
+        <li><a href="prices.html"   class="nav-link" id="nav-prices">Live Prices</a></li>
+        <li><a href="simulator.html"class="nav-link" id="nav-simulator">Block Simulator</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero" id="hero">
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Layer 2 · Arbitrum · Ethereum Scaling
+      </div>
+
+      <h1 class="hero-title">
+        Ethereum,<br/>
+        <span class="gradient-text">Supercharged.</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Arbitrum brings Ethereum's security to a faster, cheaper Layer 2 rollup —
+        enabling real-world dApps without the mainnet bottleneck.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#why-l2" class="btn btn-primary" id="btn-learn">
+          <span>Why Layer 2?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </a>
+        <a href="simulator.html" class="btn btn-secondary" id="btn-simulate">
+          <span>Try Block Simulator</span>
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-value" id="stat-gas">~$0.01</span>
+          <span class="stat-label">Avg Gas Fee on Arbitrum</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value">40×</span>
+          <span class="stat-label">Cheaper than Mainnet</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value">100%</span>
+          <span class="stat-label">Ethereum Security</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- ═══ WHY L2 ═══ -->
+  <section class="section why-l2" id="why-l2">
+    <div class="container">
+      <div class="section-label">The Problem</div>
+      <h2 class="section-title">Why Ethereum Needed<br/><span class="gradient-text">Layer 2</span></h2>
+      <p class="section-sub">Ethereum is powerful — but its base layer (Layer 1) has hard limits that create real pain for users and developers.</p>
+
+      <div class="problem-grid">
+        <div class="problem-card" id="prob-1">
+          <div class="prob-icon">⚡</div>
+          <h3>Congestion & Slow TPS</h3>
+          <p>Ethereum mainnet processes only <strong>~15–30 transactions per second</strong>. During peak demand (NFT drops, DeFi surges), the network jams — transactions take minutes or hours to confirm.</p>
+        </div>
+        <div class="problem-card" id="prob-2">
+          <div class="prob-icon">💸</div>
+          <h3>Skyrocketing Gas Fees</h3>
+          <p>Congestion triggers a gas fee bidding war. In 2021, average fees hit <strong>$50–$200 per transaction</strong> — making small-value transactions economically impossible for everyday users.</p>
+        </div>
+        <div class="problem-card" id="prob-3">
+          <div class="prob-icon">🚫</div>
+          <h3>Accessibility Barrier</h3>
+          <p>High costs lock out users in developing countries and micro-transaction use cases. DeFi, gaming, and NFT apps become <strong>impractical for mass adoption</strong> on mainnet alone.</p>
+        </div>
+      </div>
+
+      <!-- Ethereum vs Arbitrum comparison strip -->
+      <div class="eth-arb-compare" id="ethArbCompare">
+        <div class="compare-col eth-col">
+          <div class="compare-logo">Ξ Ethereum L1</div>
+          <div class="compare-stat bad">15–30 TPS</div>
+          <div class="compare-stat bad">$5–$200 avg fee</div>
+          <div class="compare-stat bad">~12 sec blocks</div>
+          <div class="compare-stat bad">Congestion prone</div>
+        </div>
+        <div class="compare-vs">
+          <div class="vs-arrow">→</div>
+          <div class="vs-label">Layer 2<br/>Rollup</div>
+        </div>
+        <div class="compare-col arb-col">
+          <div class="compare-logo arb">⬡ Arbitrum One</div>
+          <div class="compare-stat good">~4,500 TPS</div>
+          <div class="compare-stat good">~$0.01–$0.10 fee</div>
+          <div class="compare-stat good">&lt;1 sec confirmation</div>
+          <div class="compare-stat good">Inherited ETH security</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WHAT IS ARBITRUM ═══ -->
+  <section class="section what-arb" id="what-arb">
+    <div class="container">
+      <div class="arb-intro-grid">
+        <div class="arb-intro-text">
+          <div class="section-label">The Solution</div>
+          <h2 class="section-title">What is <span class="gradient-text">Arbitrum?</span></h2>
+          <p>Arbitrum is an <strong>Optimistic Rollup</strong> Layer 2 network built on top of Ethereum. It bundles hundreds of transactions off-chain, compresses them, and posts a single proof back to Ethereum — inheriting its full security while achieving a fraction of the cost.</p>
+          <p>Built by <strong>Offchain Labs</strong>, Arbitrum is the largest Layer 2 by Total Value Locked (TVL), hosting major DeFi protocols like GMX, Uniswap, and Aave.</p>
+
+          <div class="arb-tags">
+            <span class="tag">Optimistic Rollup</span>
+            <span class="tag">EVM Compatible</span>
+            <span class="tag">Fraud Proofs</span>
+            <span class="tag">No New Trust</span>
+            <span class="tag">Nitro Stack</span>
+          </div>
+        </div>
+
+        <div class="arb-diagram" id="arbDiagram">
+          <div class="diag-layer diag-l2" id="diag-l2">
+            <span class="diag-badge">Layer 2</span>
+            <div class="diag-title">Arbitrum</div>
+            <div class="diag-txs">
+              <div class="diag-tx">TX</div>
+              <div class="diag-tx">TX</div>
+              <div class="diag-tx">TX</div>
+              <div class="diag-tx">TX</div>
+              <div class="diag-tx">TX</div>
+              <div class="diag-tx">TX</div>
+            </div>
+            <div class="diag-arrow-down">↓ Batch & Compress</div>
+          </div>
+          <div class="diag-layer diag-l1" id="diag-l1">
+            <span class="diag-badge l1">Layer 1</span>
+            <div class="diag-title">Ethereum</div>
+            <div class="diag-batch">1 Batch Proof posted on-chain</div>
+            <div class="diag-security">🔒 Full Ethereum Security</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- How rollup works -->
+      <div class="rollup-steps" id="rollupSteps">
+        <div class="rollup-step" id="rs-1">
+          <div class="rs-num">01</div>
+          <div class="rs-icon">📝</div>
+          <h4>User Submits TX</h4>
+          <p>Transaction is sent to Arbitrum sequencer — near-instant confirmation off-chain.</p>
+        </div>
+        <div class="rs-connector"></div>
+        <div class="rollup-step" id="rs-2">
+          <div class="rs-num">02</div>
+          <div class="rs-icon">📦</div>
+          <h4>Batch Collected</h4>
+          <p>Hundreds of TXs are bundled together by the sequencer into a compressed batch.</p>
+        </div>
+        <div class="rs-connector"></div>
+        <div class="rollup-step" id="rs-3">
+          <div class="rs-num">03</div>
+          <div class="rs-icon">📤</div>
+          <h4>Posted to L1</h4>
+          <p>Batch calldata is posted to Ethereum mainnet — creating an immutable record.</p>
+        </div>
+        <div class="rs-connector"></div>
+        <div class="rollup-step" id="rs-4">
+          <div class="rs-num">04</div>
+          <div class="rs-icon">🛡️</div>
+          <h4>Challenge Window</h4>
+          <p>7-day optimistic period allows anyone to submit a fraud proof if data is wrong.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ REAL-WORLD BENEFIT ═══ -->
+  <section class="section benefit-section" id="benefit">
+    <div class="container">
+      <div class="section-label">Real-World Impact</div>
+      <h2 class="section-title">One Benefit That <span class="gradient-text">Changes Everything</span></h2>
+
+      <div class="benefit-showcase" id="benefitShowcase">
+        <div class="benefit-main-card" id="benefitCard">
+          <div class="benefit-icon-large">🎮</div>
+          <div class="benefit-content">
+            <div class="benefit-category">Use Case: Blockchain Gaming</div>
+            <h3>Micro-transactions at Virtually Zero Cost</h3>
+            <p>On Ethereum mainnet, a game item purchase costs <strong>$15–$50 in gas alone</strong> — more than the item itself. On Arbitrum, that same transaction costs <strong>less than one cent</strong>.</p>
+            <p>This enables entirely new categories of applications: real-time in-game economies, micro-tipping, per-action NFT minting, and pay-per-use smart contracts — none of which are viable on mainnet.</p>
+            <div class="benefit-comparison">
+              <div class="bc-item bad">
+                <span class="bc-label">Ethereum L1</span>
+                <span class="bc-val">$15–$50 per action</span>
+              </div>
+              <div class="bc-arrow">→</div>
+              <div class="bc-item good">
+                <span class="bc-label">Arbitrum L2</span>
+                <span class="bc-val">&lt;$0.01 per action</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="benefit-side">
+          <div class="bside-card" id="bside-1">
+            <div class="bside-icon">🏦</div>
+            <h4>DeFi at Scale</h4>
+            <p>Protocols like GMX and Uniswap V3 on Arbitrum process billions in volume weekly — impossible at mainnet costs.</p>
+          </div>
+          <div class="bside-card" id="bside-2">
+            <div class="bside-icon">🌍</div>
+            <h4>Global Access</h4>
+            <p>Users in countries with lower average incomes can now actually afford to transact and participate in Web3.</p>
+          </div>
+          <div class="bside-card" id="bside-3">
+            <div class="bside-icon">⚙️</div>
+            <h4>Same Dev Tools</h4>
+            <p>100% EVM compatible — Solidity developers deploy to Arbitrum with zero code changes needed.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURES / EXPLORE ═══ -->
+  <section class="section features-section" id="features">
+    <div class="container">
+      <div class="section-label">Explore This Site</div>
+      <h2 class="section-title">Four Modules to Master <span class="gradient-text">Web3</span></h2>
+      <p class="section-sub">Each page is an interactive module — from concept cards to live market data and hands-on mining.</p>
+
+      <div class="features-grid">
+
+        <a href="index.html" class="feature-card active-card" id="feature-home">
+          <div class="fc-icon-wrap">
+            <span class="fc-icon">🏠</span>
+          </div>
+          <h3>Home</h3>
+          <p>Arbitrum & Layer 2 overview — the foundation of this site's theme. <em>You're here.</em></p>
+          <div class="fc-tag current">Current Page</div>
+          <span class="fc-arrow">→</span>
+        </a>
+
+        <a href="concepts.html" class="feature-card" id="feature-concepts">
+          <div class="fc-icon-wrap">
+            <span class="fc-icon">🧠</span>
+          </div>
+          <h3>Concepts</h3>
+          <p>Visual comparison cards: Web2 vs Web3, Bitcoin vs Ethereum, DeFi, NFTs, DAOs, PoW vs PoS.</p>
+          <div class="fc-tag">8 Topics</div>
+          <span class="fc-arrow">→</span>
+        </a>
+
+        <a href="prices.html" class="feature-card" id="feature-prices">
+          <div class="fc-icon-wrap">
+            <span class="fc-icon">📈</span>
+          </div>
+          <h3>Live Prices</h3>
+          <p>Real-time ETH & BTC dashboard from the CoinGecko API with sparklines and auto-refresh.</p>
+          <div class="fc-tag live">Live Data</div>
+          <span class="fc-arrow">→</span>
+        </a>
+
+        <a href="simulator.html" class="feature-card" id="feature-simulator">
+          <div class="fc-icon-wrap">
+            <span class="fc-icon">⛏️</span>
+          </div>
+          <h3>Block Simulator</h3>
+          <p>Mine blocks, adjust nonces, and break & repair chain immutability — hands-on PoW simulation.</p>
+          <div class="fc-tag">Interactive</div>
+          <span class="fc-arrow">→</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer" id="footer">
+    <div class="footer-glow"></div>
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo footer-logo">
+            <span class="logo-icon">
+              <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+                <path d="M14 2L26 8.5V19.5L14 26L2 19.5V8.5L14 2Z" stroke="url(#lg2)" stroke-width="2" fill="none"/>
+                <path d="M14 8L20 11.5V18.5L14 22L8 18.5V11.5L14 8Z" fill="url(#lg2)" opacity="0.4"/>
+                <defs>
+                  <linearGradient id="lg2" x1="2" y1="2" x2="26" y2="26" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#12aaff"/>
+                    <stop offset="1" stop-color="#6366f1"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </span>
+            <span class="logo-text">Web3<span class="logo-accent">Universe</span></span>
+          </a>
+          <p>A Web3 educational platform exploring Arbitrum, Layer 2 scaling, and the decentralized future. Built for the Web3 Foundations Assignment.</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="concepts.html">Concepts</a></li>
+            <li><a href="prices.html">Live Prices</a></li>
+            <li><a href="simulator.html">Block Simulator</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Topics</h4>
+          <ul>
+            <li><a href="#why-l2">Why Layer 2?</a></li>
+            <li><a href="#what-arb">What is Arbitrum</a></li>
+            <li><a href="#benefit">Real-World Benefits</a></li>
+            <li><a href="concepts.html">Web3 vs Web2</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-about">
+          <h4>About the Developer</h4>
+          <div class="dev-info">
+            <div class="dev-row">
+              <span class="dev-icon">👤</span>
+              <span class="dev-val">Meet Vekariya</span>
+            </div>
+            <div class="dev-row">
+              <span class="dev-icon">🎓</span>
+              <span class="dev-val">MSU BE-III CSE (SFI)</span>
+            </div>
+            <div class="dev-row">
+              <span class="dev-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </span>
+              <a href="https://github.com/meetvekariya7071" target="_blank" rel="noopener" class="dev-link">github.com/meetvekariya7071</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>Built by <strong>Meet Vekariya</strong> · <strong>MSU BE-III CSE (SFI)</strong> · Web3 Foundations Assignment &copy; 2026</p>
+        <p class="footer-tech">Powered by CoinGecko API · Web Crypto SHA-256 · Vanilla JS</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/global.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

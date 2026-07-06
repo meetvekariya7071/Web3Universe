@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web3 Concepts — Visual Comparison Cards</title>
+  <meta name="description" content="Compare Web2 vs Web3, Bitcoin vs Ethereum, DeFi, NFTs, DAOs and more with stunning visual comparison cards." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/concepts.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">Web3<span class="logo-accent">Universe</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
+        <li><a href="concepts.html" class="nav-link active" id="nav-concepts">Concepts</a></li>
+        <li><a href="prices.html" class="nav-link" id="nav-prices">Live Prices</a></li>
+        <li><a href="simulator.html" class="nav-link" id="nav-simulator">Block Simulator</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-hero concepts-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <span class="section-tag">Knowledge Base</span>
+      <h1 class="page-title">Web3 <span class="gradient-text">Concepts</span></h1>
+      <p class="page-subtitle">Explore the core concepts of the decentralized web through interactive comparison cards, explainers, and visual breakdowns.</p>
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-filter="all" id="filter-all">All Topics</button>
+        <button class="filter-btn" data-filter="comparison" id="filter-comparison">Comparisons</button>
+        <button class="filter-btn" data-filter="crypto" id="filter-crypto">Cryptography</button>
+        <button class="filter-btn" data-filter="defi" id="filter-defi">DeFi</button>
+        <button class="filter-btn" data-filter="nft" id="filter-nft">NFTs & DAOs</button>
+        <button class="filter-btn" data-filter="tech" id="filter-tech">Technology</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Concepts Grid -->
+  <section class="concepts-section" id="conceptsSection">
+    <div class="container">
+      <div class="concepts-grid" id="conceptsGrid">
+
+        <!-- Card 1: Web2 vs Web3 -->
+        <div class="concept-card" data-category="comparison" id="card-web2-vs-web3">
+          <div class="card-glow"></div>
+          <div class="card-header">
+            <div class="card-badge comparison">Comparison</div>
+            <h3 class="card-title">Web2 vs Web3</h3>
+            <p class="card-subtitle">The fundamental paradigm shift in how the internet works.</p>
+          </div>
+          <div class="vs-comparison">
+            <div class="vs-side web2-side">
+              <div class="vs-label">Web2</div>
+              <ul class="vs-list">
+                <li>🏢 Centralized servers</li>
+                <li>🔑 Platform controls data</li>
+                <li>👤 Accounts owned by companies</li>
+                <li>💰 Revenue goes to platforms</li>
+                <li>🚫 Censorship possible</li>
+                <li>🔒 Walled gardens</li>
+              </ul>
+            </div>
+            <div class="vs-divider">
+              <div class="vs-circle">VS</div>
+            </div>
+            <div class="vs-side web3-side">
+              <div class="vs-label">Web3</div>
+              <ul class="vs-list">
+                <li>🌐 Decentralized nodes</li>
+                <li>🗝️ You own your data</li>
+                <li>💎 Wallet-based identity</li>
+                <li>💸 Creators earn directly</li>
+                <li>✅ Censorship resistant</li>
+                <li>🔓 Interoperable</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Bitcoin vs Ethereum -->
+        <div class="concept-card" data-category="comparison" id="card-btc-vs-eth">
+          <div class="card-glow"></div>
+          <div class="card-header">
+            <div class="card-badge comparison">Comparison</div>
+            <h3 class="card-title">Bitcoin vs Ethereum</h3>
+            <p class="card-subtitle">The two titans of the crypto universe serve very different purposes.</p>
+          </div>
+          <div class="vs-comparison">
+            <div class="vs-side btc-side">
+              <div class="vs-label">₿ Bitcoin</div>
+              <ul class="vs-list">
+                <li>🪙 Digital currency</li>
+                <li>🔒 Store of value</li>
+                <li>⛏️ Proof of Work</li>
+                <li>📦 ~21M max supply</li>
+                <li>⏱ ~10 min blocks</li>
+                <li>📜 Limited scripting</li>
+              </ul>
+            </div>
+            <div class="vs-divider">
+              <div class="vs-circle">VS</div>
+            </div>
+            <div class="vs-side eth-side">
+              <div class="vs-label">Ξ Ethereum</div>
+              <ul class="vs-list">
+                <li>⚙️ Programmable platform</li>
+                <li>🔧 World computer</li>
+                <li>🌱 Proof of Stake</li>
+                <li>♾ No hard cap (issuance)</li>
+                <li>⚡ ~12 sec blocks</li>
+                <li>📋 Full smart contracts</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Blockchain Explained -->
+        <div class="concept-card card-wide" data-category="tech" id="card-blockchain">
+          <div class="card-glow"></div>
+          <div class="card-header">
+            <div class="card-badge tech">Technology</div>
+            <h3 class="card-title">How Blockchain Works</h3>
+            <p class="card-subtitle">A distributed ledger that's virtually impossible to tamper with.</p>
+          </div>
+          <div class="blockchain-explainer">
+            <div class="step-flow">
+              <div class="step" id="step-1">
+                <div class="step-icon">📝</div>
+                <div class="step-num">1</div>
+                <h4>Transaction</h4>
+                <p>Alice sends 1 ETH to Bob. This transaction is broadcast to the network.</p>
+              </div>
+              <div class="step-arrow">→</div>
+              <div class="step" id="step-2">
+                <div class="step-icon">🔗</div>
+                <div class="step-num">2</div>
+                <h4>Pool</h4>
+                <p>Transaction enters the mempool where validators pick it up.</p>
+              </div>
+              <div class="step-arrow">→</div>
+              <div class="step" id="step-3">
+                <div class="step-icon">⛏️</div>
+                <div class="step-num">3</div>
+                <h4>Validation</h4>
+                <p>Validators verify the transaction and include it in a block.</p>
+              </div>
+              <div class="step-arrow">→</div>
+              <div class="step" id="step-4">
+                <div class="step-icon">⛓️</div>
+                <div class="step-num">4</div>
+                <h4>Confirmed</h4>
+                <p>Block is added to the chain. Transaction is now permanent and immutable.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: DeFi -->
+        <div class="concept-card" data-category="defi" id="card-defi">
+          <div class="card-glow"></div>
+          <div class="card-header">
+            <div class="card-badge defi">DeFi</div>
+            <h3 class="card-title">Decentralized Finance</h3>
+            <p class="card-subtitle">Banking without banks — financial services powered by smart contracts.</p>
+          </div>
+          <div class="concept-body">
+            <div class="concept-stat-row">
+              <div class="cstat">
+                <span class="cstat-val">$50B+</span>
+                <span class="cstat-key">Total Value Locked</span>
+              </div>
+              <div class="cstat">
+                <span class="cstat-val">0%</span>
+                <span class="cstat-key">Intermediary Fee</span>
+              </div>
+            </div>
+            <div class="concept-tags">
+              <span class="ctag">Lending</span>
+              <span class="ctag">Borrowing</span>
+              <span class="ctag">DEX Trading</span>
+              <span class="ctag">Yield Farming</span>
+              <span class="ctag">Staking</span>
+              <span class="ctag">Liquidity Mining</span>
+            </div>
+            <p class="concept-desc">DeFi protocols like Uniswap, Aave, and Compound run entirely on smart contracts — no sign-ups, no banks, no borders. Anyone with a crypto wallet can access financial services 24/7.</p>
+          </div>
+        </div>
+
+        <!-- Card 5: NFTs -->
+        <div class="concept-card" data-category="nft" id="card-nfts">
+          <div class="card-glow"></div>
+          <div class="card-header">
+            <div class="card-badge nft">NFTs</div>
+            <h3 class="card-title">Non-Fungible Tokens</h3>
+            <p class="card-subtitle">Unique digital ownership on the blockchain.</p>
+          </div>
+          <div class="concept-body">
+            <div class="nft-visual" id="nftVisual">
+              <div class="nft-card-preview">
+                <div class="nft-art">🎨</div>
+                <div class="nft-info">
+                  <div class="nft-name">CryptoPunk #3429</div>
+                  <div class="nft-owner">Owned by: 0xA3b...f91</div>
+                  <div class="nft-badge">✅ Verified on-chain</div>
+                </div>
+              </div>
+            </div>
+            <p class="concept-desc">NFTs use the ERC-721 standard to create provably unique, scarce digital items. Unlike fungible tokens (every ETH is identical), each NFT has a unique ID and provenance stored on-chain.</p>
+            <div class="concept-tags">
+              <span class="ctag">ERC-721</span>
+              <span class="ctag">Digital Art</span>
+              <span class="ctag">Gaming</span>
+              <span class="ctag">Music</span>
+              <span class="ctag">Real Estate</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6: DAOs -->
+        <div class="concept-card" data-category="nft" id="card-daos">
+          <div class="card-glow"></div>
+          <div class="card-header">
+            <div class="card-badge dao">DAO</div>
+            <h3 class="card-title">Decentralized Autonomous Organizations</h3>
+            <p class="card-subtitle">Companies governed by code, not executives.</p>
+          </div>
+          <div class="concept-body">
+            <div class="dao-structure" id="daoStructure">
+              <div class="dao-center">DAO</div>
+              <div class="dao-members">
+                <div class="dao-member" style="--angle:0deg">🗳️ Vote</div>
+                <div class="dao-member" style="--angle:72deg">💡 Propose</div>
+                <div class="dao-member" style="--angle:144deg">🏦 Treasury</div>
+                <div class="dao-member" style="--angle:216deg">⚙️ Execute</div>
+                <div class="dao-member" style="--angle:288deg">👥 Members</div>
+              </div>
+            </div>
+            <p class="concept-desc">DAOs encode organizational rules in smart contracts. Token holders vote on proposals — no CEO, no board. Decisions execute automatically when thresholds are met.</p>
+          </div>
+        </div>
+
+        <!-- Card 7: Smart Contracts -->
+        <div class="concept-card" data-category="tech" id="card-smart-contracts">
+          <div class="card-glow"></div>
+          <div class="card-header">
+            <div class="card-badge tech">Technology</div>
+            <h3 class="card-title">Smart Contracts</h3>
+            <p class="card-subtitle">Self-executing code that runs on the blockchain — no trust required.</p>
+          </div>
+          <div class="concept-body">
+            <div class="code-preview" id="codePreview">
+              <div class="code-bar">
+                <span class="code-dot red"></span>
+                <span class="code-dot yellow"></span>
+                <span class="code-dot green"></span>
+                <span class="code-lang">Solidity</span>
+              </div>
+              <pre class="code-content"><code><span class="kw">contract</span> <span class="fn">SimpleEscrow</span> {
+  <span class="kw">address</span> <span class="var">buyer</span>;
+  <span class="kw">address</span> <span class="var">seller</span>;
+  <span class="kw">uint</span> <span class="var">amount</span>;
+
+  <span class="kw">function</span> <span class="fn">release</span>() <span class="kw">public</span> {
+    <span class="kw">require</span>(<span class="fn">msg.sender</span> == buyer);
+    seller.<span class="fn">transfer</span>(amount);
+  }
+}</code></pre>
+            </div>
+            <p class="concept-desc">Smart contracts are programs stored on the blockchain. They run when predetermined conditions are met — automating agreements without any trusted third party.</p>
+          </div>
+        </div>
+
+        <!-- Card 8: Proof of Work vs Proof of Stake -->
+        <div class="concept-card" data-category="comparison" id="card-pow-vs-pos">
+          <div class="card-glow"></div>
+          <div class="card-header">
+            <div class="card-badge comparison">Comparison</div>
+            <h3 class="card-title">PoW vs PoS</h3>
+            <p class="card-subtitle">The two dominant consensus mechanisms for validating blockchain transactions.</p>
+          </div>
+          <div class="vs-comparison">
+            <div class="vs-side pow-side">
+              <div class="vs-label">⛏️ Proof of Work</div>
+              <ul class="vs-list">
+                <li>🔢 Solve math puzzles</li>
+                <li>⚡ Energy intensive</li>
+                <li>💻 Hardware required</li>
+                <li>🛡️ Battle-tested (BTC)</li>
+                <li>🌡️ High heat output</li>
+                <li>🌍 Large carbon footprint</li>
+              </ul>
+            </div>
+            <div class="vs-divider">
+              <div class="vs-circle">VS</div>
+            </div>
+            <div class="vs-side pos-side">
+              <div class="vs-label">🌱 Proof of Stake</div>
+              <ul class="vs-list">
+                <li>💎 Lock up tokens</li>
+                <li>♻️ 99.9% less energy</li>
+                <li>💰 Capital required</li>
+                <li>🔬 Newer, evolving (ETH)</li>
+                <li>❄️ Low heat output</li>
+                <li>🌿 Eco-friendly</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 9: Public Key vs Private Key -->
+        <div class="concept-card" data-category="crypto" id="card-keys">
+          <div class="card-glow"></div>
+          <div class="card-header">
+            <div class="card-badge crypto">Cryptography</div>
+            <h3 class="card-title">Public Key vs Private Key</h3>
+            <p class="card-subtitle">The cryptographic pair that makes trustless ownership possible.</p>
+          </div>
+          <div class="vs-comparison">
+            <div class="vs-side pubkey-side">
+              <div class="vs-label">🔓 Public Key</div>
+              <ul class="vs-list">
+                <li>📢 Shareable with anyone</li>
+                <li>📥 Your wallet address</li>
+                <li>✅ Used to verify signatures</li>
+                <li>🔍 Visible on the blockchain</li>
+                <li>📩 Others send funds to it</li>
+                <li>🔑 Derived from private key</li>
+              </ul>
+            </div>
+            <div class="vs-divider">
+              <div class="vs-circle">VS</div>
+            </div>
+            <div class="vs-side privkey-side">
+              <div class="vs-label">🔐 Private Key</div>
+              <ul class="vs-list">
+                <li>🤫 Keep it absolutely secret</li>
+                <li>✍️ Signs transactions</li>
+                <li>👑 Proves you own funds</li>
+                <li>🚪 Full wallet access</li>
+                <li>❌ Lost = funds gone forever</li>
+                <li>🎲 Random 256-bit number</li>
+              </ul>
+            </div>
+          </div>
+          <div class="key-analogy">
+            <div class="analogy-icon">💡</div>
+            <p><strong>Think of it like email:</strong> Your public key is your email address — share it freely so people can send you funds. Your private key is your email password — never share it, or anyone can access and drain your wallet.</p>
+          </div>
+        </div>
+
+        <!-- Card 10: Blockchain vs Traditional Database -->
+        <div class="concept-card" data-category="comparison" id="card-db">
+          <div class="card-glow"></div>
+          <div class="card-header">
+            <div class="card-badge comparison">Comparison</div>
+            <h3 class="card-title">Blockchain vs Traditional Database</h3>
+            <p class="card-subtitle">Two completely different philosophies for storing and trusting data.</p>
+          </div>
+          <div class="vs-comparison">
+            <div class="vs-side db-side">
+              <div class="vs-label">🗄️ Traditional DB</div>
+              <ul class="vs-list">
+                <li>🏢 Controlled by one entity</li>
+                <li>✏️ Records can be edited</li>
+                <li>🗑️ Records can be deleted</li>
+                <li>🔒 Requires trust in admin</li>
+                <li>⚡ Very fast reads/writes</li>
+                <li>💰 Low operational cost</li>
+              </ul>
+            </div>
+            <div class="vs-divider">
+              <div class="vs-circle">VS</div>
+            </div>
+            <div class="vs-side blockchain-side">
+              <div class="vs-label">⛓️ Blockchain</div>
+              <ul class="vs-list">
+                <li>🌐 Distributed across nodes</li>
+                <li>🔒 Immutable — append only</li>
+                <li>♾️ Records never deleted</li>
+                <li>✅ Trustless by design</li>
+                <li>🐢 Slower — consensus needed</li>
+                <li>💸 Higher per-TX cost</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <span class="logo-icon">⬡</span>
+            <span class="logo-text">Web3<span class="logo-accent">Universe</span></span>
+          </a>
+          <p>A Web3 educational platform built to bridge the gap between theory and hands-on implementation.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="concepts.html">Concepts</a></li>
+            <li><a href="prices.html">Live Prices</a></li>
+            <li><a href="simulator.html">Block Simulator</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Web3 Topics</h4>
+          <ul>
+            <li><a href="concepts.html">Blockchain</a></li>
+            <li><a href="concepts.html">DeFi</a></li>
+            <li><a href="concepts.html">NFTs</a></li>
+            <li><a href="concepts.html">DAOs</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Built by <strong>Meet Vekariya</strong> &middot; <strong>MSU BE-III CSE (SFI)</strong> &middot; Web3 Foundations Assignment &copy; 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/global.js"></script>
+  <script src="js/concepts.js"></script>
+</body>
+</html>

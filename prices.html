@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Crypto Prices — ETH & BTC Dashboard</title>
+  <meta name="description" content="Real-time cryptocurrency price dashboard tracking ETH, BTC and top crypto assets live from CoinGecko API." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/prices.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">Web3<span class="logo-accent">Universe</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
+        <li><a href="concepts.html" class="nav-link" id="nav-concepts">Concepts</a></li>
+        <li><a href="prices.html" class="nav-link active" id="nav-prices">Live Prices</a></li>
+        <li><a href="simulator.html" class="nav-link" id="nav-simulator">Block Simulator</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-hero prices-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <div class="prices-header-row">
+        <div>
+          <span class="section-tag">Live Market Data</span>
+          <h1 class="page-title">Crypto <span class="gradient-text">Prices</span></h1>
+          <p class="page-subtitle">Real-time market data from the CoinGecko API — refreshed every 60 seconds.</p>
+        </div>
+        <div class="live-indicator" id="liveIndicator">
+          <div class="live-dot"></div>
+          <span id="liveStatus">Fetching data...</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Dashboard -->
+  <section class="prices-section" id="pricesSection">
+    <div class="container">
+
+      <!-- Top Featured Cards: ETH + BTC -->
+      <div class="featured-prices" id="featuredPrices">
+        <!-- BTC Card -->
+        <div class="featured-price-card" id="btcCard" data-coin="bitcoin">
+          <div class="coin-header">
+            <div class="coin-icon btc-icon">₿</div>
+            <div class="coin-meta">
+              <h2 class="coin-name">Bitcoin</h2>
+              <span class="coin-symbol">BTC</span>
+            </div>
+            <div class="coin-rank">#1</div>
+          </div>
+          <div class="coin-price-main" id="btcPrice">
+            <div class="price-skeleton"></div>
+          </div>
+          <div class="coin-change" id="btcChange">
+            <div class="change-skeleton"></div>
+          </div>
+          <div class="coin-stats" id="btcStats">
+            <div class="stat-skeleton"></div>
+          </div>
+          <div class="sparkline-container">
+            <canvas id="btcSparkline" width="300" height="60"></canvas>
+          </div>
+        </div>
+
+        <!-- ETH Card -->
+        <div class="featured-price-card" id="ethCard" data-coin="ethereum">
+          <div class="coin-header">
+            <div class="coin-icon eth-icon">Ξ</div>
+            <div class="coin-meta">
+              <h2 class="coin-name">Ethereum</h2>
+              <span class="coin-symbol">ETH</span>
+            </div>
+            <div class="coin-rank">#2</div>
+          </div>
+          <div class="coin-price-main" id="ethPrice">
+            <div class="price-skeleton"></div>
+          </div>
+          <div class="coin-change" id="ethChange">
+            <div class="change-skeleton"></div>
+          </div>
+          <div class="coin-stats" id="ethStats">
+            <div class="stat-skeleton"></div>
+          </div>
+          <div class="sparkline-container">
+            <canvas id="ethSparkline" width="300" height="60"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Market Overview Bar -->
+      <div class="market-overview" id="marketOverview">
+        <div class="market-stat" id="totalMarketCap">
+          <span class="market-label">Total Market Cap</span>
+          <span class="market-value" id="totalMarketCapValue">Loading...</span>
+        </div>
+        <div class="market-stat" id="btcDominance">
+          <span class="market-label">BTC Dominance</span>
+          <span class="market-value" id="btcDominanceValue">Loading...</span>
+        </div>
+        <div class="market-stat" id="totalVolume">
+          <span class="market-label">24h Volume</span>
+          <span class="market-value" id="totalVolumeValue">Loading...</span>
+        </div>
+        <div class="market-stat">
+          <span class="market-label">Active Coins</span>
+          <span class="market-value" id="activeCoinsValue">Loading...</span>
+        </div>
+      </div>
+
+      <!-- Additional Coins Table -->
+      <div class="coins-table-section" id="coinsTableSection">
+        <div class="table-header-row">
+          <h2>Top 10 Cryptocurrencies</h2>
+          <div class="refresh-controls">
+            <button class="refresh-btn" id="refreshBtn">
+              <svg id="refreshIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M23 4v6h-6M1 20v-6h6"/>
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+              </svg>
+              Refresh
+            </button>
+            <span class="last-updated" id="lastUpdated">Never updated</span>
+          </div>
+        </div>
+        <div class="coins-table" id="coinsTable">
+          <div class="table-head">
+            <span class="th">#</span>
+            <span class="th">Coin</span>
+            <span class="th">Price</span>
+            <span class="th">24h Change</span>
+            <span class="th">Market Cap</span>
+            <span class="th">24h Volume</span>
+          </div>
+          <div class="table-body" id="tableBody">
+            <!-- Skeleton rows -->
+            <div class="table-row skeleton-row"><div class="tr-skeleton"></div></div>
+            <div class="table-row skeleton-row"><div class="tr-skeleton"></div></div>
+            <div class="table-row skeleton-row"><div class="tr-skeleton"></div></div>
+            <div class="table-row skeleton-row"><div class="tr-skeleton"></div></div>
+            <div class="table-row skeleton-row"><div class="tr-skeleton"></div></div>
+            <div class="table-row skeleton-row"><div class="tr-skeleton"></div></div>
+            <div class="table-row skeleton-row"><div class="tr-skeleton"></div></div>
+            <div class="table-row skeleton-row"><div class="tr-skeleton"></div></div>
+            <div class="table-row skeleton-row"><div class="tr-skeleton"></div></div>
+            <div class="table-row skeleton-row"><div class="tr-skeleton"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Error State -->
+      <div class="error-state hidden" id="errorState">
+        <div class="error-icon">⚠️</div>
+        <h3>Failed to Fetch Prices</h3>
+        <p id="errorMsg">Unable to connect to the CoinGecko API. This may be due to rate limiting or network issues.</p>
+        <button class="btn btn-primary" id="retryBtn">Try Again</button>
+        <p class="error-note">💡 Tip: CoinGecko's free API allows 10–30 calls/min. Wait a moment before retrying.</p>
+      </div>
+
+      <!-- How It Works -->
+      <div class="how-it-works" id="howItWorks">
+        <h2>How This Dashboard Works</h2>
+        <div class="how-grid">
+          <div class="how-item" id="how-1">
+            <div class="how-icon">🌐</div>
+            <h4>CoinGecko API</h4>
+            <p>We use CoinGecko's free public API endpoint <code>/coins/markets</code> to fetch live price data.</p>
+          </div>
+          <div class="how-item" id="how-2">
+            <div class="how-icon">⚡</div>
+            <h4>Auto-Refresh</h4>
+            <p>Prices automatically refresh every 60 seconds to keep data current without rate-limiting the API.</p>
+          </div>
+          <div class="how-item" id="how-3">
+            <div class="how-icon">📊</div>
+            <h4>Sparkline Charts</h4>
+            <p>7-day price sparklines are rendered on HTML Canvas using data points from the CoinGecko response.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <span class="logo-icon">⬡</span>
+            <span class="logo-text">Web3<span class="logo-accent">Universe</span></span>
+          </a>
+          <p>Price data provided by CoinGecko API. Not financial advice.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="concepts.html">Concepts</a></li>
+            <li><a href="prices.html">Live Prices</a></li>
+            <li><a href="simulator.html">Block Simulator</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Data Source</h4>
+          <ul>
+            <li><a href="https://www.coingecko.com/en/api" target="_blank" rel="noopener">CoinGecko API</a></li>
+            <li><a href="https://www.coingecko.com" target="_blank" rel="noopener">CoinGecko.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Built by <strong>Meet Vekariya</strong> &middot; <strong>MSU BE-III CSE (SFI)</strong> &middot; Web3 Foundations Assignment &copy; 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/global.js"></script>
+  <script src="js/prices.js"></script>
+</body>
+</html>

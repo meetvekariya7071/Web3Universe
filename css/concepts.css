@@ -1,0 +1,611 @@
+/* ============================================
+   CONCEPTS.CSS — Concepts Page Styles
+   ============================================ */
+
+/* ---- Page Hero ---- */
+.concepts-hero {
+  padding-bottom: 0;
+}
+
+.concepts-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 10px 22px;
+  border-radius: 100px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--clr-border);
+  color: var(--clr-text-2);
+  cursor: pointer;
+  transition: all var(--trans-med);
+}
+
+.filter-btn:hover {
+  background: rgba(99,102,241,0.1);
+  border-color: rgba(99,102,241,0.4);
+  color: var(--clr-white);
+}
+
+.filter-btn.active {
+  background: var(--grad-primary);
+  border-color: transparent;
+  color: white;
+  box-shadow: 0 4px 15px rgba(99,102,241,0.4);
+}
+
+/* ---- Concepts Section ---- */
+.concepts-section {
+  padding: 60px 0 80px;
+}
+
+.concepts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* ---- Concept Card Base ---- */
+.concept-card {
+  position: relative;
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-xl);
+  padding: 36px;
+  overflow: hidden;
+  transition: all var(--trans-med);
+}
+
+.concept-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--grad-primary);
+  opacity: 0;
+  transition: opacity var(--trans-med);
+}
+
+.concept-card:hover {
+  border-color: var(--clr-border-glow);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg), 0 0 40px rgba(99,102,241,0.12);
+}
+
+.concept-card:hover::before {
+  opacity: 1;
+}
+
+.card-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(99,102,241,0.05) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity var(--trans-slow);
+  pointer-events: none;
+}
+
+.concept-card:hover .card-glow {
+  opacity: 1;
+}
+
+.card-wide {
+  grid-column: 1 / -1;
+}
+
+/* ---- Card Header ---- */
+.card-header {
+  margin-bottom: 28px;
+}
+
+.card-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+
+.card-badge.comparison {
+  background: rgba(99,102,241,0.12);
+  color: var(--clr-primary-2);
+  border: 1px solid rgba(99,102,241,0.25);
+}
+
+.card-badge.tech {
+  background: rgba(6,182,212,0.12);
+  color: var(--clr-accent);
+  border: 1px solid rgba(6,182,212,0.25);
+}
+
+.card-badge.defi {
+  background: rgba(16,185,129,0.12);
+  color: var(--clr-green);
+  border: 1px solid rgba(16,185,129,0.25);
+}
+
+.card-badge.nft {
+  background: rgba(168,85,247,0.12);
+  color: var(--clr-purple);
+  border: 1px solid rgba(168,85,247,0.25);
+}
+
+.card-badge.dao {
+  background: rgba(245,158,11,0.12);
+  color: var(--clr-yellow);
+  border: 1px solid rgba(245,158,11,0.25);
+}
+
+.card-badge.crypto {
+  background: rgba(236,72,153,0.12);
+  color: var(--clr-pink);
+  border: 1px solid rgba(236,72,153,0.25);
+}
+
+/* ── Extra VS side variants ── */
+.pubkey-side   { background: rgba(6,182,212,0.05);   border-color: rgba(6,182,212,0.2); }
+.privkey-side  { background: rgba(168,85,247,0.05);  border-color: rgba(168,85,247,0.2); }
+.db-side       { background: rgba(245,158,11,0.05);  border-color: rgba(245,158,11,0.2); }
+.blockchain-side { background: rgba(16,185,129,0.05); border-color: rgba(16,185,129,0.2); }
+
+/* ── Key Analogy callout ── */
+.key-analogy {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: rgba(99,102,241,0.06);
+  border: 1px solid rgba(99,102,241,0.18);
+  border-radius: var(--radius-md);
+}
+
+.analogy-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+
+.key-analogy p {
+  font-size: 0.875rem;
+  color: var(--clr-text-2);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.card-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.card-subtitle {
+  color: var(--clr-text-2);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ---- VS Comparison ---- */
+.vs-comparison {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.vs-side {
+  padding: 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--clr-border);
+}
+
+.web2-side  { background: rgba(239,68,68,0.05); border-color: rgba(239,68,68,0.15); }
+.web3-side  { background: rgba(99,102,241,0.05); border-color: rgba(99,102,241,0.15); }
+.btc-side   { background: rgba(245,158,11,0.05); border-color: rgba(245,158,11,0.15); }
+.eth-side   { background: rgba(99,102,241,0.05); border-color: rgba(99,102,241,0.15); }
+.pow-side   { background: rgba(239,68,68,0.05); border-color: rgba(239,68,68,0.15); }
+.pos-side   { background: rgba(16,185,129,0.05); border-color: rgba(16,185,129,0.15); }
+
+.vs-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 14px;
+  color: var(--clr-text);
+}
+
+.vs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vs-list li {
+  font-size: 0.875rem;
+  color: var(--clr-text-2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vs-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.vs-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--grad-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: white;
+  box-shadow: 0 4px 15px rgba(99,102,241,0.4);
+}
+
+/* ---- Blockchain Explainer ---- */
+.blockchain-explainer {
+  overflow-x: auto;
+}
+
+.step-flow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 600px;
+}
+
+.step {
+  flex: 1;
+  background: var(--clr-bg-2);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  transition: all var(--trans-med);
+}
+
+.step:hover {
+  border-color: var(--clr-border-glow);
+  transform: translateY(-4px);
+}
+
+.step-icon {
+  font-size: 1.75rem;
+  margin-bottom: 8px;
+}
+
+.step-num {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 24px;
+  background: var(--grad-primary);
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--clr-white);
+}
+
+.step p {
+  font-size: 0.8rem;
+  color: var(--clr-text-2);
+  line-height: 1.5;
+}
+
+.step-arrow {
+  color: var(--clr-primary);
+  font-size: 1.25rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ---- Concept Body Shared ---- */
+.concept-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.concept-stat-row {
+  display: flex;
+  gap: 20px;
+}
+
+.cstat {
+  flex: 1;
+  background: var(--clr-bg-2);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  text-align: center;
+}
+
+.cstat-val {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-family: var(--font-head);
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cstat-key {
+  font-size: 0.75rem;
+  color: var(--clr-text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.concept-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ctag {
+  padding: 5px 12px;
+  background: rgba(99,102,241,0.08);
+  border: 1px solid rgba(99,102,241,0.15);
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--clr-primary-2);
+  transition: all var(--trans-fast);
+  cursor: default;
+}
+
+.ctag:hover {
+  background: rgba(99,102,241,0.2);
+  border-color: rgba(99,102,241,0.4);
+}
+
+.concept-desc {
+  font-size: 0.9rem;
+  color: var(--clr-text-2);
+  line-height: 1.7;
+}
+
+/* ---- NFT Visual ---- */
+.nft-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.nft-card-preview {
+  background: var(--clr-bg-2);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  width: 240px;
+  transition: all var(--trans-med);
+}
+
+.nft-card-preview:hover {
+  border-color: rgba(168,85,247,0.4);
+  box-shadow: 0 0 30px rgba(168,85,247,0.2);
+  transform: translateY(-4px);
+}
+
+.nft-art {
+  background: linear-gradient(135deg, rgba(168,85,247,0.2), rgba(236,72,153,0.2));
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.nft-info {
+  padding: 14px;
+}
+
+.nft-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--clr-white);
+  margin-bottom: 6px;
+}
+
+.nft-owner {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--clr-text-3);
+  margin-bottom: 8px;
+}
+
+.nft-badge {
+  font-size: 0.75rem;
+  color: var(--clr-green);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ---- DAO Structure ---- */
+.dao-structure {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto;
+}
+
+.dao-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  background: var(--grad-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: white;
+  box-shadow: 0 0 20px rgba(99,102,241,0.4);
+  z-index: 2;
+}
+
+.dao-members {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.dao-member {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 68px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--clr-surface-2);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--clr-text-2);
+  text-align: center;
+  transition: all var(--trans-med);
+  transform-origin: center;
+  transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-90px) rotate(calc(-1 * var(--angle)));
+}
+
+.dao-member:hover {
+  background: rgba(99,102,241,0.15);
+  border-color: rgba(99,102,241,0.4);
+  color: var(--clr-white);
+}
+
+/* ---- Code Preview ---- */
+.code-preview {
+  background: #0d1117;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--trans-med);
+}
+
+.code-preview:hover {
+  border-color: rgba(6,182,212,0.4);
+  box-shadow: 0 0 20px rgba(6,182,212,0.1);
+}
+
+.code-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.code-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.code-dot.red    { background: #ff5f57; }
+.code-dot.yellow { background: #febc2e; }
+.code-dot.green  { background: #28c840; }
+
+.code-lang {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--clr-text-3);
+  font-family: var(--font-mono);
+}
+
+.code-content {
+  padding: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--clr-text-2);
+  overflow-x: auto;
+}
+
+.code-content .kw  { color: #ff79c6; }
+.code-content .fn  { color: #50fa7b; }
+.code-content .var { color: #f1fa8c; }
+
+/* ---- Hidden/Filtered Cards ---- */
+.concept-card.filtered-out {
+  display: none;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .concepts-grid {
+    grid-template-columns: 1fr;
+  }
+  .card-wide {
+    grid-column: 1;
+  }
+  .step-flow {
+    flex-direction: column;
+    min-width: unset;
+  }
+  .step-arrow {
+    transform: rotate(90deg);
+  }
+  .vs-comparison {
+    grid-template-columns: 1fr;
+  }
+  .vs-divider {
+    flex-direction: row;
+    padding: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .concept-card { padding: 24px; }
+  .dao-structure { width: 180px; height: 180px; }
+  .dao-member { width: 56px; height: 56px; font-size: 0.6rem; transform: translate(-50%,-50%) rotate(var(--angle)) translateY(-75px) rotate(calc(-1 * var(--angle))); }
+}
